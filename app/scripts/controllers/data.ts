@@ -3,13 +3,13 @@
 'use strict';
 
 module swaggerBuilderApp {
-  export interface IAboutScope extends ng.IScope {
+  export interface IDataScope extends ng.IScope {
     awesomeThings: any[];
   }
 
-  export class AboutCtrl {
+  export class DataCtrl {
     // @ngInject
-    constructor (private $scope: IAboutScope) {
+    constructor (private $scope: IDataScope) {
       $scope.awesomeThings = [
         'HTML5 Boilerplate',
         'AngularJS',
@@ -20,4 +20,4 @@ module swaggerBuilderApp {
 }
 
 angular.module('swaggerBuilderApp')
-  .controller('AboutCtrl', swaggerBuilderApp.AboutCtrl);
+  .controller('DataCtrl', swaggerBuilderApp.DataCtrl);

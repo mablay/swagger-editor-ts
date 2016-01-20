@@ -1,13 +1,9 @@
 /// <reference path="../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../typings/angular-ui-router/angular-ui-router.d.ts" />
 /// <reference path="../../typings/lodash/lodash.d.ts" />
-/// <reference path="models/status-model.ts" />
-/// <reference path="models/system-model.ts" />
-/// <reference path="services/parameter.ts" />
-/// <reference path="services/relation.ts" />
 
 
-module ecoSimApp {
+module swaggerBuilderApp {
   'use strict';
 
   export class EcoSim {
@@ -27,7 +23,7 @@ module ecoSimApp {
 
       // @ngInject
       this.app.config(function($stateProvider: angular.ui.IStateProvider, $urlRouterProvider: angular.ui.IUrlRouterProvider) {
-        
+
         // Default state
         $urlRouterProvider.otherwise('/');
 
@@ -45,36 +41,24 @@ module ecoSimApp {
               }
             }
           })
-          .state('public.main', {
+          .state('public.editor', {
             url: '/',
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
+            templateUrl: 'views/editor.html',
+            controller: 'EditorCtrl'
           })
-          .state('public.systems', {
-            url: '/systems',
-            templateUrl: 'views/systems.html',
-            controller: 'SystemsCtrl',
-            controllerAs: 'sysCtrl'
+          .state('public.data', {
+            url: '/',
+            templateUrl: 'views/data.html',
+            controller: 'DataCtrl'
           })
-          .state('public.system', {
-            url: '/system/:id',
-            templateUrl: 'views/system-detail.html',
-            controller: 'SystemDetailCtrl',
-            controllerAs: 'sysCtrl'
-          })
-          .state('public.parameters', {
-            url: '/parameters',
-            templateUrl: 'views/parameters.html',
-            controller: 'ParametersCtrl'
-          })
-          .state('public.relations', {
-            url: '/relations',
-            templateUrl: 'views/relations.html',
-            controller: 'RelationsCtrl'
+          .state('public.about', {
+            url: '/about',
+            templateUrl: 'views/about.html',
+            controller: 'AboutCtrl'
           });
 
       });
-      
+
       this.app.run(function(){
         // App is running
         console.debug('[APP] Running...');
@@ -94,6 +78,6 @@ module ecoSimApp {
 
 
 
-  new ecoSimApp.EcoSim('ecoSimApp').bootstrapWhenReady();
+  new swaggerBuilderApp.EcoSim('swaggerBuilderApp').bootstrapWhenReady();
 
 }

@@ -2,7 +2,7 @@
 
 'use strict';
 
-module ecoSimApp {
+module swaggerBuilderApp {
   export interface IMainScope extends ng.IScope {
     awesomeThings: any[];
   }
@@ -17,5 +17,5 @@ module ecoSimApp {
   }
 }
 
-angular.module('ecoSimApp')
-  .controller('MainCtrl', ecoSimApp.MainCtrl);
+angular.module('swaggerBuilderApp')
+  .controller('MainCtrl', swaggerBuilderApp.MainCtrl);
