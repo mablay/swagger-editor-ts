@@ -4,3 +4,6 @@
 /.sass-cache
 /bower_components
 /typings
+.idea
+*.map
+*.js
