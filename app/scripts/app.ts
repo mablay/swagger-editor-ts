@@ -6,9 +6,22 @@
 module swaggerBuilderApp {
   'use strict';
 
-  export class EcoSim {
+
+  export class SwaggerBuilderApp {
 
     app: ng.IModule;
+
+    /**
+     * Manual bootstrapping of the angular application
+     * This method is invoked at the end of the module
+     **/
+    public bootstrapWhenReady() {
+      angular.element(document).ready(() => {
+        console.log('[' + this.app.name + '] Bootstraping');
+        angular.bootstrap(document, [this.app.name]);
+      });
+    }
+
 
     constructor(name: string) {
       this.app = angular.module(name, [
@@ -18,7 +31,8 @@ module swaggerBuilderApp {
         'ui.router',
         'ngSanitize',
         'ngTouch',
-        'ngStorage'
+        'ngStorage',
+        'schemaForm'
       ]);
 
       // @ngInject
@@ -44,7 +58,8 @@ module swaggerBuilderApp {
           .state('public.editor', {
             url: '/',
             templateUrl: 'views/editor.html',
-            controller: 'EditorCtrl'
+            controller: 'EditorCtrl',
+            controllerAs: 'editor'
           })
           .state('public.data', {
             url: '/',
@@ -59,6 +74,11 @@ module swaggerBuilderApp {
 
       });
 
+      // @ngInject
+      this.app.config(function($localStorageProvider) {
+        $localStorageProvider.setKeyPrefix('swag-');
+      });
+
       this.app.run(function(){
         // App is running
         console.debug('[APP] Running...');
@@ -67,17 +87,8 @@ module swaggerBuilderApp {
     }
 
 
-    public bootstrapWhenReady() {
-      angular.element(document).ready(() => {
-        console.log('[' + this.app.name + '] Bootstraping');
-        angular.bootstrap(document, [this.app.name]);
-      });
-    }
-
   }
 
-
-
-  new swaggerBuilderApp.EcoSim('swaggerBuilderApp').bootstrapWhenReady();
+  new swaggerBuilderApp.SwaggerBuilderApp('swaggerBuilderApp').bootstrapWhenReady();
 
 }

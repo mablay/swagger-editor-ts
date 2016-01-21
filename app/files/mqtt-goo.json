@@ -1,0 +1,113 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Guaroo Internal MQTT API",
+        "description": "Multi-asset management platform for the future. This is the API which uses MQTT protocol. Be aware of this notation POST => PUBLISH, GET => SUBSCRIBE, paths => topics, query => payload. This is an async API so there is no responses only listening to other topics.",
+        "version": "1.0.0",
+        "x-extra": null
+    },
+    "host": "guaroo-mqtt-2:8883",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v1",
+    "paths": {
+        "/email/system/plain/": {
+            "post": {
+                "summary": "Sending plain system emails to specified recipients.",
+                "description": "Send out plain emails with no templating included. Multiple recipients supported.",
+                "parameters": [
+                    {
+                        "name": "toEmail",
+                        "in": "query",
+                        "description": "Recipient(s) email.",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "toName",
+                        "in": "query",
+                        "description": "Longitude component of location.",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "Signing/tracking domain name.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "subject",
+                        "in": "query",
+                        "description": "Subject of email.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "EmailApp"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfuly sent out an email via Mandrill",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/EmailApp"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/EmailApp"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "EmailApp": {
+            "type": "object",
+            "properties": {
+                "publishSuccess": {
+                    "type": "object",
+                    "properties": {
+                        "message": {
+                            "type": "string"
+                        },
+                        "result": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "publishError": {
+                    "type": "object",
+                    "properties": {
+                        "message": {
+                            "type": "string"
+                        },
+                        "errors": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

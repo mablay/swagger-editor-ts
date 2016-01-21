@@ -1,1 +1,66 @@
-<p>This is the editor view.</p>
+<div class="editor-view ditch">
+  <div class="row">
+    <!-- LEFT -->
+    <div class="col-md-6">
+      <h2>MQTT Schema definition</h2>
+
+
+      <form sf-schema="editor.schema"
+            sf-form="editor.form"
+            sf-model="editor.model"></form>
+
+
+      <div class="form-section">
+        <h3>Add Message</h3>
+        <!-- ADD MESSAGE -->
+        <div class="input-group">
+          <input type="text"
+                 class="form-control"
+                 ng-model="newMsgPath"
+                 placeholder="Topic (email/send/plain) then select method">
+          <span class="input-group-btn">
+            <button class="btn btn-primary"
+                    ng-click="editor.addMessage(newMsgPath, 'publish')"
+                    type="button">Add PUBLISH</button>
+            <button class="btn btn-warning"
+                    ng-click="editor.addMessage(newMsgPath, 'subscribe')"
+                    type="button">Add SUBSCRIBE</button>
+          </span>
+        </div><!-- /input-group -->
+      </div>
+
+      <!-- LIST PATHs -->
+      <div ng-repeat="(path, pathSchema) in editor.schema.properties.paths.properties">
+        <div ng-repeat="(method, methodSchema) in pathSchema.properties">
+          <h4 class="text-info">/<span ng-bind="path"></span>
+            <span class="pull-right text-success" ng-bind="method"></span>
+          </h4>
+            <form
+              sf-schema="methodSchema"
+              sf-form='["summary", "description"]'
+              sf-model="editor.model.paths[path][method]"></form>
+
+
+
+          <div ng-repeat="(parameter, parameterSchema) in methodSchema.properties.parameters.properties">
+            <pre ng-bind="parameter|json"></pre>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+
+
+    <!-- RIGHT -->
+    <div class="col-md-6">
+      <pre ng-bind="editor.model|json"></pre>
+
+      <pre ng-bind="editor.schema.properties.paths.properties|json"></pre>
+
+    </div>
+  </div>
+</div>

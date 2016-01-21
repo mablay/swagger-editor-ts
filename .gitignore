@@ -7,3 +7,4 @@
 .idea
 *.map
 *.js
+.DS_Store
