@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>MQTT Designer</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" type="image/png" href="/img/favicon-32x32.png">
@@ -32,6 +32,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -40,6 +41,7 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/bootswatch-dist/js/bootstrap.js"></script>
     <script src="bower_components/tv4/tv4.js"></script>
     <script src="bower_components/objectpath/lib/ObjectPath.js"></script>
     <script src="bower_components/angular-schema-form/dist/schema-form.js"></script>
@@ -55,6 +57,14 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/editor.js"></script>
         <script src="scripts/controllers/data.js"></script>
+        <script src="scripts/directives/schema-mqtt.js"></script>
+        <script src="scripts/directives/schema-message.js"></script>
+        <script src="scripts/directives/df-string.js"></script>
+        <script src="scripts/directives/df-number.js"></script>
+        <script src="scripts/directives/df-boolean.js"></script>
+        <script src="scripts/directives/df-array.js"></script>
+        <script src="scripts/directives/df-object.js"></script>
+        <script src="scripts/directives/schema-parameter.js"></script>
         <!-- endbuild -->
 </body>
 </html>

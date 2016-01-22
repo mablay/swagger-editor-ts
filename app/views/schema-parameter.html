@@ -1,0 +1,27 @@
+<div class="schema-view">
+
+  <h3>
+    <span ng-bind="model.name||'NEW PARAMETER'"></span>
+    <span ng-bind="model.type | uppercase"
+          class="pull-right text-muted"></span>
+  </h3>
+  <!-- Parameter properties form -->
+  <form sf-schema="schema" sf-model="model"></form>
+
+  <!-- ARRAY -->
+  <div ng-show="model.type == 'array'">
+    <div class="form-group">
+      <label>Item type</label>
+      <select ng-model="model.items.type" class="form-control">
+        <option value="string">String</option>
+        <option value="number">Number</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- OBJECT -->
+  <div ng-show="model.type == 'object'">
+    Object fields
+  </div>
+
+</div>

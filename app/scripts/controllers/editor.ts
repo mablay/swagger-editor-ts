@@ -7,23 +7,27 @@ module swaggerBuilderApp {
   export class EditorCtrl {
 
     storage:any;
+    /*
     schema:any;
     form:any;
     model:any;
-
+    */
 
     // @ngInject
     constructor ($localStorage) {
       this.storage = $localStorage;
 
+      /*
       this.initLocalStorageDataStructure();
 
       // Using angular form schema
       this.schema = this.storage.schema;
       this.form = this.storage.form;
       this.model = this.storage.model;
+      */
     }
 
+    /*
     // Init localstorage data structure if its not yet present
     initLocalStorageDataStructure():void {
       this.storage.schema = this.storage.schema || this.initSchema();
@@ -190,6 +194,7 @@ module swaggerBuilderApp {
         responses: {}
       };
     }
+    */
   }
 }
 

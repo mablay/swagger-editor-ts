@@ -1,0 +1,41 @@
+<div class="schema-view">
+
+  <!-- MQTT properties form -->
+  <form sf-schema="schema"
+        sf-form="form"
+        sf-model="model"></form>
+
+
+  <h2>Messages</h2>
+
+  <!-- ADD MESSAGE -->
+  <div class="form-section">
+    <h3>Add Message</h3>
+    <div class="input-group">
+      <input type="text"
+             class="form-control"
+             ng-model="newMsgPath"
+             placeholder="Topic (email/send/plain) then select method">
+          <span class="input-group-btn">
+            <button class="btn btn-primary"
+                    ng-click="editor.addMessage(newMsgPath, 'publish')"
+                    type="button">Add PUBLISH</button>
+            <button class="btn btn-warning"
+                    ng-click="editor.addMessage(newMsgPath, 'subscribe')"
+                    type="button">Add SUBSCRIBE</button>
+          </span>
+    </div><!-- /input-group -->
+  </div>
+
+
+  <!-- LIST MESSAGESs -->
+  <div ng-repeat="(path, pathSchema) in schema.properties.paths.properties">
+    <div ng-repeat="(method, methodSchema) in pathSchema.properties">
+      <div  schema-message="methodSchema"
+            model="model.paths[path][method]"
+            path="{{path}}"
+            method="{{method}}"></div>
+    </div>
+  </div>
+
+</div>

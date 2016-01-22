@@ -1,0 +1,45 @@
+<div class="schema-view">
+  <h4 class="text-info page-header">/<span ng-bind="path"></span>
+    <span class="pull-right text-success" ng-bind="method"></span>
+  </h4>
+
+  <!-- Method properties form -->
+  <form sf-schema="schema"
+        sf-form="form"
+        sf-model="model"></form>
+
+
+
+  <!-- ADD PARAMETER -->
+  <div class="form-section">
+    <h3>Parameter
+
+      <!-- Dropdown button -->
+      <div class="dropdown pull-right">
+        <button type="button"
+                class="btn btn-info dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+          Add Parameter
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item" ng-click="addParameter('string')"><a>String</a></li>
+          <li class="dropdown-item" ng-click="addParameter('number')"><a>Number</a></li>
+          <li class="dropdown-item" ng-click="addParameter('boolean')"><a>Boolean</a></li>
+          <li class="dropdown-item" ng-click="addParameter('object')"><a>Object</a></li>
+          <li class="dropdown-item" ng-click="addParameter('array')"><a>Array</a></li>
+        </ul>
+      </div>
+
+    </h3>
+
+  </div>
+
+  <div ng-repeat="parameter in model.parameters">
+    <div schema-parameter="parameter"></div>
+  </div>
+
+
+</div>
